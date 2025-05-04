@@ -1,0 +1,16 @@
+{% load static %}  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wenetis Blog</title>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1><a href="{% url 'post_list' %}">Wenetis Blog</a></h1>
+        <Hr/>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

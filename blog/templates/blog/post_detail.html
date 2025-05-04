@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="post-detail-container">
+        <h2 class="post-detail-title">{{ post.title }}</h2>
+        <span class="post-detail-date">{{ post.created_at|date:"F j, Y" }}</span>
+        <div class="post-detail-content">
+            {{ post.content|linebreaks }}
+        </div>
+        <a href="{% url 'post_list' %}" class="back-button">← Back </a>
+    </div>
+</div>
+{% endblock %}

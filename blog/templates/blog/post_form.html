@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <h2 class="form-title">Add new blog</h2>
+    <form method="post" class="post-form">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            {% for field in form %}
+                <div class="form-field">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <small class="form-help">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <div class="form-error">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="submit-button">Publish</button>
+            <a href="{% url 'post_list' %}" class="cancel-button">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
